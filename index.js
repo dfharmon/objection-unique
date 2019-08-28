@@ -47,7 +47,8 @@ module.exports = options => {
         }
 
         if (isEmpty(queryOptions.old)) {
-          throw new Error('Unique validation at update only works with queries started with $query.');
+          return parent;
+          //throw new Error('Unique validation at update only works with queries started with $query.');
         }
 
         return this.queryResolver(parent, true, queryOptions);
@@ -87,7 +88,7 @@ module.exports = options => {
             return queries;
           }
 
-	  if (compact(fields.map(fieldName => this[fieldName])).length !== fields.length) {
+          if (compact(fields.map(fieldName => this[fieldName])).length !== fields.length) {
             return queries;
           }
 
