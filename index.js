@@ -87,6 +87,10 @@ module.exports = options => {
             return queries;
           }
 
+	  if (compact(fields.map(fieldName => this[fieldName])).length !== fields.length) {
+            return queries;
+          }
+
           const query = (
             fields.reduce(
               (subset, fieldName) => subset.where(fieldName, this[fieldName] || queryOptions.old[fieldName]),
